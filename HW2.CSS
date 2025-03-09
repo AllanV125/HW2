@@ -114,7 +114,30 @@ header{
     border: 1px solid #333;
     background-color: #f9f9f9;
  }
+ input [type="Range"] :: before 
+ {content: '1 2 3 4 5 6 7 8 9 10';
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+ }
+input [ type = "Range"] ::after
+{
+    content: '1 2 3 4 5 6 7 8 9 10';
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+ }
  
+
+
  
  
  
