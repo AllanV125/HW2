@@ -151,11 +151,15 @@ function validateUid()
         return true;
     }
 }
-if (!pword.match(/[a-z]/)) errorMessage.push("Enter at least one lowercase letter");
-if (!pword.match(/[A-Z]/)) errorMessage.push("Enter at least one uppercase letter");
-if (!pword.match(/[0-9]/)) errorMessage.push("Enter at least one number");
-if (!pword.match(/[!\@#\$%&*\-_\\.+\(\)]/)) errorMessage.push("Enter at least one special character");
-if (pword.includes(uid)) errorMessage.push("Password can't contain user ID");
+function validatePassword(uid, pword) {
+    let errorMessage = [];
+    if (!pword.match(/[a-z]/)) errorMessage.push("Enter at least one lowercase letter");
+    if (!pword.match(/[A-Z]/)) errorMessage.push("Enter at least one uppercase letter");
+    if (!pword.match(/[0-9]/)) errorMessage.push("Enter at least one number");
+    if (!pword.match(/[!\@#\$%&*\-_\\.+\(\)]/)) errorMessage.push("Enter at least one special character");
+    if (pword.includes(uid)) errorMessage.push("Password can't contain user ID");
+    return errorMessage;
+}
 
 
 
