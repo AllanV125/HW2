@@ -114,7 +114,46 @@ header{
     border: 1px solid #333;
     background-color: #f9f9f9;
  }
- 
- 
+ .error {
+    color: red;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+ }
+ .pword-message 
+ {
+    text-align: right;  
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;    
+    position: relative;
+    left: 100px;    
+    background: transparent;
+    padding: 10PX;
+    border-spacing: 2PX;
+    border-color: #333;
+    border-radius: 20px;
+ }
+ #review {
+    margin-top: 5px;
+}
+table {
+    tr.output,
+    td.output 
+    {
+        width: 500px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-spacing: 2px;
+        border-radius: 20px;
+        border-color: #333;
+    }
+    td.output 
+    {
+        width: 500px;
+        background-color: Pick a color;
+        padding: 10px;
+        border-spacing: 2px;
+    }
+}
  
  

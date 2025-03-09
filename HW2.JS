@@ -3,7 +3,7 @@ Name: Allan Vega
 Date Created:02/08/2024
 Date last modified: 02/08/2024
 Version: 1.0
-Description: Homework 1
+Description: Homework 2
 */
 // Dynamic date js code
 const d = new Date();
@@ -29,8 +29,7 @@ function validateDob()
  if (date > new Date())
  {
   document.getElementById("dob-error").innerHTML = "Date of Birth cannot be in the future"; DOB.value = "";
-  dob.value = "";
-  return false;
+  DOB.value = "";
  } else if (date< new Date(maxdate))
    document.getElementById("dob-error").innerHTML = "Date of Birth cannot be more than 100 years ago"; dob.value = "";
    return false;
@@ -56,7 +55,7 @@ else
 function validateZcode()
 {
  const zcode = document.getElementById("zcode").value;
-let zip = zipInput.value.replace(/[^0-9]/g, "");
+let zip = zcode.replace(/[^0-9]/g, "");
  if (!zip)
  {
    document.getElementById("zcode-error").innerHTML = "Zip code cannot be blank";
@@ -161,5 +160,51 @@ function validatePassword(uid, pword) {
     return errorMessage;
 }
 
+function validatePword()
+{
+    pword1= document.getElementById("pword1").value;
+    pword2= document.getElementById("pword2").value;
+    if (pword1 !== pword2)
+    {
+        document.getElementById("pword-error").innerHTML = "Passwords do not match";
+        return false;
+    }
+    else
+    {
+        document.getElementById("pword-error").innerHTML = "";
+        return true;
+    }
+}
+function reviewInput()
+{
+  var formcontent = document.getElementById("signup-form");
+  var formoutput = document.getElementById("form-output");
+  for ( let i = 0; i < formcontnet.length; i++)
+  {
+   if (formcontnet.elements[i].value !== "Review")
+   {
+   switch ( formcontnet.elements[i].type)
+   {
+    case "checkbox":
+        if (formcontnet.elements[i].checked)
+        {
+            formutput += ' <tr><td align="right">' + formcontent.elements[i].name + '</td><td>Yes</td></tr>';
+        }
+        break;
+    case "radio":
+        if (formcontnet.elements[i].checked)
+        {
+            formoutput += ' <tr><td align="right">' + formcontnet.elements[i].name + '</td><td>' + formcontnet.elements[i].value + '</td></tr>';
+        }
+        break;
+        default:
+            formoutput += ' <tr><td> align="right">' + formcontnet.elements[i].name + '</td><td>' + formcontnet.elements[i].value + '</td></tr>';
+   }
+   }
+}
 
-
+function removeReview() 
+{
+    document.getElementById("showInput").innerHTML = "";
+}
+}
