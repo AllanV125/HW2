@@ -9,13 +9,13 @@ Description: Homework 2
 const d = new Date();
 document.getElementById("today").innerHTML = d;
 // name slider js code
-let slider = document.getElementById("Range");
-let output = document.getElementById("slider-ranger");
-output.innerHTML = slider.value;
-slider.oninput = function() 
-{
-    output.innerHTML = this.value; 
+let slider = document.getElementById("range");  
+let output = document.getElementById("range-slider");  
+
+slider.oninput = function() {
+    output.innerHTML = this.value;
 };
+
 
 slider.oninput = function()
 {
@@ -103,7 +103,7 @@ function validatePhone()
         return false;
     }
     phone = phone.replace(/[^0-9]/g, "");
-    if (phone.length == 10)
+    if (phone.length == 14)
     {
         phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
     }
@@ -178,6 +178,7 @@ function validatePword()
 function reviewInput()
 {
   var formcontent = document.getElementById("signup-form");
+  output.innerHTML = '<h3>Please review your information:</h3>';
   var formoutput = document.getElementById("form-output");
   for ( let i = 0; i < formcontnet.length; i++)
   {
