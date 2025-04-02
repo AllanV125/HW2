@@ -51,8 +51,8 @@ Description:Patients Registration Form
                <td><label for="lname">Last Name:</label></td>
                <td><input type="text" id="lname" name="lname" maxlength="30" required placeholder="Vega"
                title="Letter, apostrophes, and dashes on name only" pattern="[A-Za-z'-]{1,30}"
-               onblur="validateName()"
-               <span class="Error" id="Lname-error"></span></td>
+               onblur="validateName()" /> </td>
+               <span class="error" id="Lname-error"></span>
                <tr>
                <td> <label for="minital">Middle Initial:</label></td>
                <td><input type="text" id="minital" name="minital" minlength="1" maxlength="1" required
@@ -76,7 +76,7 @@ Description:Patients Registration Form
            </tr>
            <tr>
                <td> <label for="DOB">Date of Birth:</label></td>
-               <td> <input type="date" id="DOB" name="DOB" onblur="validateDOB()" required>
+               <td> <input type="date" id="DOB" name="DOB" onblur="validateDob()"  required>
                <span class="error" id="DOB-Error"></span>
            </tr>
            <tr>
@@ -102,7 +102,7 @@ Description:Patients Registration Form
                <td><label for="ssn">SSN:</label></td>
                <td><input type="text" id="ssn" name="ssn" maxlength="11" required placeholder="115-55-5155"
                title="number only" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
-               onblur="validateSSN()">
+               onblur="validateSsn()"
                <span class="error" id="ssn-error"></span>
            </tr>
            <tr>
@@ -166,17 +166,17 @@ Description:Patients Registration Form
                </tr>
                <tr>
                    <td><label for="phone-number">Phone Number </label></td>
-                   <td><input type="tel" id="phone-number" name="phone-number" maxlength="10" required placeholder="210-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number" onblur="validatePhoneNumber()"></td>
+                   <td><input type="tel" id="phone-number" name="phone-number" maxlength="10" required placeholder="210-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number" onblur="validatePhone()"></td>
                    <span class="error" id="phone-numberError"></span>
                    <span class="error" id="phone-numberError"></span>
                </tr>
                <tr>
                    <td><label for="email-address">Email Address:</label></td>
-                   <td><input type="email" id="email-address" name="email-address" maxlength="30" required placeholder="name@domain.tld" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$" title="Please enter a valid email address" onblur="validateEmail()"></td>
+                   <td><input type="email" id="email" name="email-address" maxlength="30" required placeholder="name@domain.tld" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$" title="Please enter a valid email address" onblur="validateEmail()"></td>
                    <span class="error" id="email-addressError"></span>
                   </tr>
                    <td><label for="zipcode">zipcode</label></td>
-                   <td><input type="text" id="zipcode" name="zipcode" minlength="5" maxlength="10" required placeholder="77044" title="Please enter a valid zipcode" pattern="\d{5,10}(-\d{4})?" onblur="validateZipcode()"></td>
+                   <td><input type="text" id="zipcode" name="zipcode" minlength="5" maxlength="10" required placeholder="77044" title="Please enter a valid zipcode" pattern="\d{5,10}(-\d{4})?" onblur="validateZcode()"></td>
                    <span class="error" id="zipcodeError"></span>
              
               </tr>
@@ -210,7 +210,7 @@ Description:Patients Registration Form
                </tr>
                <tr>
                    <td class="td1"><label for="uid">User ID:</label> </td>
-                   <td><input type="text" id="UserID" name="UserID" maxlength="25" title="PLease enter a user ID:" required placeholder="Your user ID"></td>
+                   <td><input type="text" id="uid" name="UserID" maxlength="25" title="PLease enter a user ID:" required placeholder="Your user ID"></td>
                   
                  <tr>
                    <td><label for="password">Password:</label></td>
@@ -223,7 +223,8 @@ Description:Patients Registration Form
                        <td><input type="password" id="rpword" name="rpword" minlength="10" title="Please reenter your password:" required onblur="validateReenterPassword()" oninput="validateReenterPassword()" onfocus="validateReenterPassword()"></td>
                          
                        <tr>
-                       <td>  <input type="button" name="Review" id="Review" value="Review" onclick="Review()"/></td>            
+                       <td>  <input type="button" name="Review" id="Review" value="Review" onclick="reviewInput()"/></td>          
+                       </tr>  
                        <div id="review-output"></div>
 
 

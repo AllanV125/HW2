@@ -17,23 +17,31 @@ slider.oninput = function() {
 };
 
 
+
 slider.oninput = function()
 {
  output.innerHTML = this.value;
 };
-function validateDob()
-{
- DOB = document.getElementById("dob");
- let DOB = document.getElementById("dob");
- let maxdate = new Date().setFullYear(new Date().getFullYear()-110);
- if (date > new Date())
- {
-  document.getElementById("dob-error").innerHTML = "Date of Birth cannot be in the future"; DOB.value = "";
-  DOB.value = "";
- } else if (date< new Date(maxdate))
-   document.getElementById("dob-error").innerHTML = "Date of Birth cannot be more than 100 years ago"; dob.value = "";
-   return false;
- }
+function validateDob() {
+    const dobInput = document.getElementById("DOB");
+    const dob = new Date(dobInput.value);
+    const today = new Date();
+    const minDate = new Date();
+    minDate.setFullYear(today.getFullYear() - 110);
+
+    if (dob > today) {
+        document.getElementById("DOB-Error").innerHTML = "Date of Birth cannot be in the future";
+        dobInput.value = "";
+        return false;
+    } else if (dob < minDate) {
+        document.getElementById("DOB-Error").innerHTML = "Date of Birth cannot be more than 110 years ago";
+        dobInput.value = "";
+        return false;
+    } else {
+        document.getElementById("DOB-Error").innerHTML = "";
+        return true;
+    }
+}
 
 function validateSsn()
 {
@@ -175,37 +183,32 @@ function validatePword()
         return true;
     }
 }
-function reviewInput()
-{
-  var formcontent = document.getElementById("signup-form");
-  output.innerHTML = '<h3>Please review your information:</h3>';
-  var formoutput = document.getElementById("form-output");
-  for ( let i = 0; i < formcontnet.length; i++)
-  {
-   if (formcontnet.elements[i].value !== "Review")
-   {
-   switch ( formcontnet.elements[i].type)
-   {
-    case "checkbox":
-        if (formcontnet.elements[i].checked)
-        {
-            formutput += ' <tr><td align="right">' + formcontent.elements[i].name + '</td><td>Yes</td></tr>';
+function reviewInput() {
+    var formcontent = document.getElementById("signup-form");
+    var output = '<h3>Please review your information:</h3><table>';
+    for (let i = 0; i < formcontent.elements.length; i++) {
+        if (formcontent.elements[i].value !== "Review") {
+            switch (formcontent.elements[i].type) {
+                case "checkbox":
+                    if (formcontent.elements[i].checked) {
+                        output += '<tr><td align="right">' + formcontent.elements[i].name + '</td><td>Yes</td></tr>';
+                    }
+                    break;
+                case "radio":
+                    if (formcontent.elements[i].checked) {
+                        output += '<tr><td align="right">' + formcontent.elements[i].name + '</td><td>' + formcontent.elements[i].value + '</td></tr>';
+                    }
+                    break;
+                default:
+                    output += '<tr><td align="right">' + formcontent.elements[i].name + '</td><td>' + formcontent.elements[i].value + '</td></tr>';
+            }
         }
-        break;
-    case "radio":
-        if (formcontnet.elements[i].checked)
-        {
-            formoutput += ' <tr><td align="right">' + formcontnet.elements[i].name + '</td><td>' + formcontnet.elements[i].value + '</td></tr>';
-        }
-        break;
-        default:
-            formoutput += ' <tr><td> align="right">' + formcontnet.elements[i].name + '</td><td>' + formcontnet.elements[i].value + '</td></tr>';
-   }
-   }
+    }
+    output += '</table>';
+    document.getElementById("form-output").innerHTML = output;
 }
-
 function removeReview() 
 {
     document.getElementById("showInput").innerHTML = "";
 }
-}
+
