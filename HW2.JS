@@ -1,27 +1,39 @@
 /*
 Name: Allan Vega
-Date Created:02/08/2024
-Date last modified: 02/08/2024
-Version: 1.0
-Description: Homework 2
+Date Created: 02/08/2024
+Date Last Modified: 02/08/2024
+Version: 1.1
+Description: Homework 2 – Updated for matching HTML element IDs and improved validations.
 */
+
 // Dynamic date js code
 const d = new Date();
 document.getElementById("today").innerHTML = d;
-// name slider js code
+
+// Name slider js code
 let slider = document.getElementById("range");  
 let output = document.getElementById("range-slider");  
 
+// Only one slider event listener is needed.
 slider.oninput = function() {
     output.innerHTML = this.value;
 };
 
+// Dummy validation functions (add your actual validation logic as needed)
+function validateName() {
+    // Add name validation logic
+    return true;
+}
+function validateMiddleInitial() {
+    // Add middle initial validation logic
+    return true;
+}
+function validateAddress() {
+    // Add address validation logic
+    return true;
+}
 
-
-slider.oninput = function()
-{
- output.innerHTML = this.value;
-};
+// Date of Birth validation
 function validateDob() {
     const dobInput = document.getElementById("DOB");
     const dob = new Date(dobInput.value);
@@ -43,121 +55,102 @@ function validateDob() {
     }
 }
 
-function validateSsn()
-{
-const ssn = document.getElementById("ssn").value;
-const ssnPattern = /^\d{3}-\d{2}-\d{4}$/;
-if (ssnPattern.test(ssn))
-{
- document.getElementById("ssn-error").innerHTML = "";
- return true;
-}
-else
-{
- document.getElementById("ssn-error").innerHTML = "Please enter a valid SSN";
- return false;
-}
+// Social Security Number validation
+function validateSsn() {
+    const ssn = document.getElementById("ssn").value;
+    const ssnPattern = /^\d{3}-\d{2}-\d{4}$/;
+    if (ssnPattern.test(ssn)) {
+        document.getElementById("ssn-error").innerHTML = "";
+        return true;
+    } else {
+        document.getElementById("ssn-error").innerHTML = "Please enter a valid SSN";
+        return false;
+    }
 }
 
-
-function validateZcode()
-{
- const zcode = document.getElementById("zcode").value;
-let zip = zcode.replace(/[^0-9]/g, "");
- if (!zip)
- {
-   document.getElementById("zcode-error").innerHTML = "Zip code cannot be blank";
-   return false;
- }
-   if (zcode.length > 5)
-   {
-     zcode = zcode.substring(0, 5) + "-" + zcode.slice(5, 9);
-   }
-   else
-   {
-     zcode = zcode.slice(0, 5);
-   }
-   zipInput.value = zcode;
-   document.getElementById("zcode").value = zcode;
-   return true;
+// Zip code validation (updated to use "zipcode" and "zipcodeError")
+function validateZcode() {
+    let zcode = document.getElementById("zipcode").value;
+    let zip = zcode.replace(/[^0-9]/g, "");
+    if (!zip) {
+        document.getElementById("zipcodeError").innerHTML = "Zip code cannot be blank";
+        return false;
+    }
+    if (zcode.length > 5) {
+        zcode = zcode.substring(0, 5) + "-" + zcode.slice(5, 9);
+    } else {
+        zcode = zcode.slice(0, 5);
+    }
+    document.getElementById("zipcode").value = zcode;
+    document.getElementById("zipcodeError").innerHTML = "";
+    return true;
 }
-function validateEmail()
-{
+
+// Email validation (updated to use error span "email-addressError")
+function validateEmail() {
     const emailR = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const emailInput = document.getElementById("email");
     let email = emailInput.value;
     if (!email) {
-        document.getElementById("email-error").innerHTML = "Email cannot be blank";
+        document.getElementById("email-addressError").innerHTML = "Email cannot be blank";
         return false;
     }
-    if (!emailR.test(email))
-    {
-        document.getElementById("email-error").innerHTML = "Please enter a valid email";
+    if (!emailR.test(email)) {
+        document.getElementById("email-addressError").innerHTML = "Please enter a valid email";
         return false;
-    }
-    else
-    {
-        document.getElementById("email-error").innerHTML = "";
+    } else {
+        document.getElementById("email-addressError").innerHTML = "";
         return true;
     }
 }
 
-function validatePhone()
-{
-    let phone = document.getElementById("phone").value;
-    if (!phone)
-    {
-        document.getElementById("phone-error").innerHTML = "Phone cannot be blank";
+// Phone number validation (updated to use "phone-number" and "phone-numberError")
+function validatePhone() {
+    let phone = document.getElementById("phone-number").value;
+    if (!phone) {
+        document.getElementById("phone-numberError").innerHTML = "Phone cannot be blank";
         return false;
     }
     phone = phone.replace(/[^0-9]/g, "");
-    if (phone.length == 14)
-    {
+    if (phone.length === 10) {
         phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
-    }
-    else
-    {
-        document.getElementById("phone-error").innerHTML = "Please enter a valid phone number";
+        document.getElementById("phone-numberError").innerHTML = "";
+    } else {
+        document.getElementById("phone-numberError").innerHTML = "Please enter a valid phone number";
         return false;
     }
     return true;
 }
-function validateUid()
-{
+
+// User ID validation – uses element "uid" and error span "uid-error"
+function validateUid() {
     const uid = document.getElementById("uid").value.toLowerCase();
     document.getElementById("uid").value = uid;
-    if (uid.length == 0)
-    {
+    if (uid.length === 0) {
         document.getElementById("uid-error").innerHTML = "User ID must be at least 6 characters";
         return false;
     }
-    if (!isNaN(uid.charAt(0)))
-    {
+    if (!isNaN(uid.charAt(0))) {
         document.getElementById("uid-error").innerHTML = "User ID must start with a letter";
         return false;
     }
     let regex = /^[a-z0-9]+$/;
-    if (!regex.test(uid))
-    {
+    if (!regex.test(uid)) {
         document.getElementById("uid-error").innerHTML = "User ID must contain only letters and numbers";
         return false;
-    }
-    else if (uid.length < 6)
-    {
+    } else if (uid.length < 6) {
         document.getElementById("uid-error").innerHTML = "User ID must be at least 6 characters";
         return false;
-    }
-    else if (uid.length > 12)
-    {
+    } else if (uid.length > 12) {
         document.getElementById("uid-error").innerHTML = "User ID cannot be more than 12 characters";
         return false;
-    }
-    else
-    {
+    } else {
         document.getElementById("uid-error").innerHTML = "";
         return true;
     }
 }
+
+// Password validation that returns error messages (if needed)
 function validatePassword(uid, pword) {
     let errorMessage = [];
     if (!pword.match(/[a-z]/)) errorMessage.push("Enter at least one lowercase letter");
@@ -168,21 +161,21 @@ function validatePassword(uid, pword) {
     return errorMessage;
 }
 
-function validatePword()
-{
-    pword1= document.getElementById("pword1").value;
-    pword2= document.getElementById("pword2").value;
-    if (pword1 !== pword2)
-    {
+// Password match validation (updated to use "password" and "rpword" IDs)
+// Ensure your HTML has an element with id "pword-error" to show the error message.
+function validatePword() {
+    let pword1 = document.getElementById("password").value;
+    let pword2 = document.getElementById("rpword").value;
+    if (pword1 !== pword2) {
         document.getElementById("pword-error").innerHTML = "Passwords do not match";
         return false;
-    }
-    else
-    {
+    } else {
         document.getElementById("pword-error").innerHTML = "";
         return true;
     }
 }
+
+// Review form input and display in a table
 function reviewInput() {
     var formcontent = document.getElementById("signup-form");
     var output = '<h3>Please review your information:</h3><table>';
@@ -205,10 +198,22 @@ function reviewInput() {
         }
     }
     output += '</table>';
-    document.getElementById("form-output").innerHTML = output;
-}
-function removeReview() 
-{
-    document.getElementById("showInput").innerHTML = "";
+    document.getElementById("review-output").innerHTML = output;
 }
 
+// Reset function to clear form and error messages
+function Reset() {
+    document.getElementById("signup-form").reset();
+    // Clear all error spans (example for a few; add others as needed)
+    document.getElementById("fnameError").innerHTML = "";
+    document.getElementById("Lname-error").innerHTML = "";
+    document.getElementById("minitalError").innerHTML = "";
+    document.getElementById("DOB-Error").innerHTML = "";
+    document.getElementById("ssn-error").innerHTML = "";
+    document.getElementById("zipcodeError").innerHTML = "";
+    document.getElementById("phone-numberError").innerHTML = "";
+    document.getElementById("email-addressError").innerHTML = "";
+    document.getElementById("uid-error").innerHTML = "";
+    document.getElementById("pword-error").innerHTML = "";
+    document.getElementById("review-output").innerHTML = "";
+}
