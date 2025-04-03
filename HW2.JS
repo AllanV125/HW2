@@ -20,7 +20,17 @@ function validateName() {
     return true;
 }
 function validateMiddleInitial() {
-    return true;
+    const middleInitial = document.getElementById("middle-initial").value;
+    if (!middleInitial) {
+        document.getElementById("minitial-error").innerHTML = "Middle initial cannot be blank";
+        return false;
+    } else if (middleInitial.length > 1) {
+        document.getElementById("minitial-error").innerHTML = "Middle initial must be a single character";
+        return false;
+    } else {
+        document.getElementById("minitial-error").innerHTML = "";
+        return true;
+    }
 }
 function validateAddress() {
     return true;
@@ -177,19 +187,13 @@ function reviewInput() {
                     }
                     break;
                 default:
-                    output += '<tr><td align="right">' + formcontent.elements[i].name + '</td><td>' + formcontent.elements[i].value + '</td></tr>';
-            }
-        }
-    }
-    output += '</table>';
-    document.getElementById("review-output").innerHTML = output;
-}
-
-function Reset() 
-;
-{
-    console.log("Reset function triggered")
+                }
+function Reset() {
     document.getElementById("signup-form").reset();
+    validatePhone(); // Reapply phone number formatting
+    validateZcode(); // Reapply zip code formatting
+    alert("Form has been reset successfully!"); // User-friendly notification
+    document.getElementById("lnameError").innerHTML = "";
     document.getElementById("fnameError").innerHTML = "";
     document.getElementById("Lname-error").innerHTML = "";
     document.getElementById("minitalError").innerHTML = "";
