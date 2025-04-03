@@ -196,6 +196,7 @@ function reviewInput() {
 } 
 function Reset() {
     console.log("Reset function triggered");
+    alert("Reset function triggered");
     document.getElementById("signup-form").reset();
     validatePhone(); // Reapply phone number formatting if needed
     validateZcode(); // Reapply zip code formatting if needed
