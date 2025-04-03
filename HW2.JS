@@ -6,34 +6,26 @@ Version: 1.1
 Description: Homework 2 – Updated for matching HTML element IDs and improved validations.
 */
 
-// Dynamic date js code
 const d = new Date();
 document.getElementById("today").innerHTML = d;
 
-// Name slider js code
 let slider = document.getElementById("range");  
 let output = document.getElementById("range-slider");  
 
-// Only one slider event listener is needed.
 slider.oninput = function() {
     output.innerHTML = this.value;
 };
 
-// Dummy validation functions (add your actual validation logic as needed)
 function validateName() {
-    // Add name validation logic
     return true;
 }
 function validateMiddleInitial() {
-    // Add middle initial validation logic
     return true;
 }
 function validateAddress() {
-    // Add address validation logic
     return true;
 }
 
-// Date of Birth validation
 function validateDob() {
     const dobInput = document.getElementById("DOB");
     const dob = new Date(dobInput.value);
@@ -55,7 +47,6 @@ function validateDob() {
     }
 }
 
-// Social Security Number validation
 function validateSsn() {
     const ssn = document.getElementById("ssn").value;
     const ssnPattern = /^\d{3}-\d{2}-\d{4}$/;
@@ -68,7 +59,6 @@ function validateSsn() {
     }
 }
 
-// Zip code validation (updated to use "zipcode" and "zipcodeError")
 function validateZcode() {
     let zcode = document.getElementById("zipcode").value;
     let zip = zcode.replace(/[^0-9]/g, "");
@@ -86,7 +76,6 @@ function validateZcode() {
     return true;
 }
 
-// Email validation (updated to use error span "email-addressError")
 function validateEmail() {
     const emailR = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const emailInput = document.getElementById("email");
@@ -104,7 +93,6 @@ function validateEmail() {
     }
 }
 
-// Phone number validation (updated to use "phone-number" and "phone-numberError")
 function validatePhone() {
     let phone = document.getElementById("phone-number").value;
     if (!phone) {
@@ -122,7 +110,6 @@ function validatePhone() {
     return true;
 }
 
-// User ID validation – uses element "uid" and error span "uid-error"
 function validateUid() {
     const uid = document.getElementById("uid").value.toLowerCase();
     document.getElementById("uid").value = uid;
@@ -150,7 +137,6 @@ function validateUid() {
     }
 }
 
-// Password validation that returns error messages (if needed)
 function validatePassword(uid, pword) {
     let errorMessage = [];
     if (!pword.match(/[a-z]/)) errorMessage.push("Enter at least one lowercase letter");
@@ -161,8 +147,7 @@ function validatePassword(uid, pword) {
     return errorMessage;
 }
 
-// Password match validation (updated to use "password" and "rpword" IDs)
-// Ensure your HTML has an element with id "pword-error" to show the error message.
+
 function validatePword() {
     let pword1 = document.getElementById("password").value;
     let pword2 = document.getElementById("rpword").value;
@@ -175,7 +160,6 @@ function validatePword() {
     }
 }
 
-// Review form input and display in a table
 function reviewInput() {
     var formcontent = document.getElementById("signup-form");
     var output = '<h3>Please review your information:</h3><table>';
@@ -201,10 +185,11 @@ function reviewInput() {
     document.getElementById("review-output").innerHTML = output;
 }
 
-// Reset function to clear form and error messages
-function Reset() {
+function Reset() 
+;
+{
+    console.log("Reset function triggered")
     document.getElementById("signup-form").reset();
-    // Clear all error spans (example for a few; add others as needed)
     document.getElementById("fnameError").innerHTML = "";
     document.getElementById("Lname-error").innerHTML = "";
     document.getElementById("minitalError").innerHTML = "";
