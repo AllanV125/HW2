@@ -20,18 +20,19 @@ function validateName() {
     return true;
 }
 function validateMiddleInitial() {
-    const middleInitial = document.getElementById("middle-initial").value;
+    const middleInitial = document.getElementById("minital").value;
     if (!middleInitial) {
-        document.getElementById("minitial-error").innerHTML = "Middle initial cannot be blank";
+        document.getElementById("minitalError").innerHTML = "Middle initial cannot be blank";
         return false;
     } else if (middleInitial.length > 1) {
-        document.getElementById("minitial-error").innerHTML = "Middle initial must be a single character";
+        document.getElementById("minitalError").innerHTML = "Middle initial must be a single character";
         return false;
     } else {
-        document.getElementById("minitial-error").innerHTML = "";
+        document.getElementById("minitalError").innerHTML = "";
         return true;
     }
 }
+
 function validateAddress() {
     return true;
 }
@@ -169,7 +170,6 @@ function validatePword() {
         return true;
     }
 }
-
 function reviewInput() {
     var formcontent = document.getElementById("signup-form");
     var output = '<h3>Please review your information:</h3><table>';
@@ -187,13 +187,19 @@ function reviewInput() {
                     }
                     break;
                 default:
-                }
+                    output += '<tr><td align="right">' + formcontent.elements[i].name + '</td><td>' + formcontent.elements[i].value + '</td></tr>';
+            }
+        }
+    }
+    output += '</table>';
+    document.getElementById("review-output").innerHTML = output;
+} 
 function Reset() {
+    console.log("Reset function triggered");
     document.getElementById("signup-form").reset();
-    validatePhone(); // Reapply phone number formatting
-    validateZcode(); // Reapply zip code formatting
+    validatePhone(); // Reapply phone number formatting if needed
+    validateZcode(); // Reapply zip code formatting if needed
     alert("Form has been reset successfully!"); // User-friendly notification
-    document.getElementById("lnameError").innerHTML = "";
     document.getElementById("fnameError").innerHTML = "";
     document.getElementById("Lname-error").innerHTML = "";
     document.getElementById("minitalError").innerHTML = "";
@@ -206,3 +212,4 @@ function Reset() {
     document.getElementById("pword-error").innerHTML = "";
     document.getElementById("review-output").innerHTML = "";
 }
+
