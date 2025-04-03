@@ -212,17 +212,24 @@ Description:Patients Registration Form
                    <td class="td1"><label for="uid">User ID:</label> </td>
                    <td><input type="text" id="uid" name="UserID" maxlength="25" title="PLease enter a user ID:" required placeholder="Your user ID"></td>
                   
-                 <tr>
-                   <td><label for="password">Password:</label></td>
-                   <td><input type="password" id="password" name="password" minlength="10" title="Please enter a password:" required onblur="validatePassword()" oninput="validatePassword()" onfocus="validatePassword()"></td>
-                   <span class="error" id="passwordError"></span>
-                
-               </tr>
                    <tr>
-                       <td><label for="rpword">Reenter Password:</label></td>
-                       <td><input type="password" id="rpword" name="rpword" minlength="10" title="Please reenter your password:" required onblur="validatePword()" oninput="validatePword()" onfocus="validatePword()">
-                       </td>
-                         
+                    <td><label for="password">Password:</label></td>
+                    <td>
+                      <input type="password" id="password" name="password" minlength="10" title="Please enter a password:" required 
+                             onblur="validatePassword()" oninput="validatePassword()" onfocus="validatePassword()">
+                      <span class="error" id="passwordError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="rpword">Reenter Password:</label></td>
+                    <td>
+                      <input type="password" id="rpword" name="rpword" minlength="10" title="Please reenter your password:" required 
+                             onblur="validatePword()" oninput="validatePword()" onfocus="validatePword()">
+                      <span class="error" id="pword-error"></span>
+                    </td>
+                  </tr>
+                  
+
                        <tr>
                        <td>  <input type="button" name="Review" id="Review" value="Review" onclick="reviewInput()"/></td>          
                        </tr>  
